@@ -153,7 +153,7 @@ public class PlayerData : NetworkBehaviour
             return;
 
         CmdPlayerAgainBtn();
-      //  PAB.gameObject.SetActive(false);
+        PAB.gameObject.SetActive(false);
        // FinalScoresImage.gameObject.SetActive(false);
         //  Debug.Log("player ready and Btn disabled");
     }

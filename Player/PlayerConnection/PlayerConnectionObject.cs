@@ -209,7 +209,7 @@ public class PlayerConnectionObject : NetworkBehaviour
         if (isLocalPlayer)//script already works on local player
             return;
 
-        Debug.Log("changing weapon on clients");
+        //Debug.Log("changing weapon on clients");
         WeaponSwitching WS= GetComponentInChildren<WeaponSwitching>();
         if (!WS) {
             Debug.Log("cant find WS script");

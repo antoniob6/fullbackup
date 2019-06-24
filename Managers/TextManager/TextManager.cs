@@ -87,7 +87,7 @@ public class TextManager : NetworkBehaviour {
         if (spawnedGreenMessage)
             Destroy(spawnedGreenMessage);
         spawnedGreenMessage = Instantiate(GreenTopLeftMessagePrefab, Vector3.zero, Quaternion.identity) as GameObject;
-        spawnedGreenMessage.GetComponent<GameMessage>().RpcUpdateText(m);
+        spawnedGreenMessage.GetComponent<GameMessage>().updateTextLocal(m);
         yield return new WaitForSeconds(time);
         if (spawnedGreenMessage)
             Destroy(spawnedGreenMessage);
