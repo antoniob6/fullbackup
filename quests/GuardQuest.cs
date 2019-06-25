@@ -110,6 +110,14 @@ public class GuardQuest : Quest
 
         return winners.Contains(PD.gameObject);
     }
+    public override bool didPlayerLose(PlayerData PD = null) {
+        if (PD == null)
+            return base.didPlayerLose();
+
+        if (!foundable && !winners.Contains(PD.gameObject))
+            return true;
+        return false;
+    }
     public override void DestroyQuest() {
         GM.networkDestroy(foundable);
         foreach(GameObject enemy in enemies) {

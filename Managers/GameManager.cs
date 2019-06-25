@@ -352,7 +352,7 @@ public class GameManager : NetworkBehaviour {
             pdata.RpcGameHasEnded();
 
         }
-        TextManager.instance.displayMessageToAll(scores, 20);
+        //TextManager.instance.displayMessageToAll(scores, 20);
     }
 
     public List<GameObject> enemies= new List<GameObject>();

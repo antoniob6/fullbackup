@@ -205,6 +205,11 @@ public class PlayerData : NetworkBehaviour
                 PSB.gameObject.SetActive(false);
         }
 
+        objectiveText = "game has ended, press vote to play again.";
+        objectiveField.text = objectiveText;
+
+
+
     }
 
     public void gameHasStarted() {//called when the game starts

@@ -11,6 +11,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class MapDemo : NetworkBehaviour
 {
@@ -53,14 +54,22 @@ public class MapDemo : NetworkBehaviour
             currentRules.isCircle = false;
         createNewMap();
     }
+    float generateEvery = 0.3f;
 
+    public void onSliderValueChange(Slider slider) {
+       
+        generateEvery = 0.05f / (slider.value + 0.1f);
+        Debug.Log("speed: " + generateEvery);
+    }
 
+    float lastSpawnTime = 0f;
     private bool createdDeathBarrier = false;
     private bool syncedTheMaps = false;
     void Update() {
-       
 
-        if (!isBusyMakingMap && !finishedCreatingPlatforms) {
+
+        if (!isBusyMakingMap && !finishedCreatingPlatforms && Time.time - lastSpawnTime >= generateEvery) {
+            lastSpawnTime = Time.time;
             if (!createdDeathBarrier) {
                 createdDeathBarrier = true;
                 //createDeathBarier();
@@ -152,7 +161,7 @@ public class MapDemo : NetworkBehaviour
 
 
 
-        NetworkServer.Spawn(GO);
+        //NetworkServer.Spawn(GO);
         return MG;
 
 
