@@ -57,7 +57,7 @@ public class RacingQuest:Quest{
             if (Vector3.Distance(GoalLocation, GO.transform.position) < threshold)
             {
                 firstPlayerObj = p;
-                Debug.Log("some one reached the end");
+                //Debug.Log("some one reached the end");
                 //Debug.Log("player has found the foundable goal");
                 winners.Add(p);
                 questCompleted();

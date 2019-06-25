@@ -21,7 +21,7 @@ public class LocationQuest:Quest{
         reward = Random.Range(50, 500);
         questMessage ="be the first to find the Blue candy";
         GM = _GM;
-        threshold = 2f;
+        threshold = 4f;
         updateQuestMessage();
 
     }

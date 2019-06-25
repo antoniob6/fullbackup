@@ -54,7 +54,7 @@ public class MapManager : NetworkBehaviour {
     void Update() {
         if (!isServer)
             return;
-        if (!isBusyMakingMap && !finishedCreatingPlatforms &&Time.time -lastSpawnTime>=0.2f) {
+        if (!isBusyMakingMap && !finishedCreatingPlatforms &&Time.time -lastSpawnTime>=0.1f) {
             lastSpawnTime = Time.time;
             if (!createdDeathBarrier) {
                 createdDeathBarrier = true;
@@ -241,7 +241,7 @@ public class MapManager : NetworkBehaviour {
 
             m.RpcSyncVerts(m.mainMesh.vertices);
            // Debug.Log("syncing platform");
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
 
     }
@@ -401,14 +401,25 @@ public class MapManager : NetworkBehaviour {
         if (!generatedMapBase)
             return Vector3.zero;
 
-        Vector3[] surfaceVerts= generatedMapBase.getSurfaceVertsInGlobalSpace();
+        Vector3[] surfaceVerts= generatedMapBase.getSpreadSurfaceVertsInGlobalSpace();
 
         if (surfaceVerts.Length <= 0) {
             Debug.Log("couldn't get map end");
             return Vector3.zero;
         }
 
-        return surfaceVerts[surfaceVerts.Length-1];
+        if (GM.currentRules.isCircle) {
+            float radius = generatedMapBase.length / Mathf.PI / 2;
+            Vector3 begin = surfaceVerts[0];
+            Vector3 end = surfaceVerts[surfaceVerts.Length - 1];
+
+            float height = radius + (end.y - begin.y);
+            Vector3 mapEnd = Vector3.up * height;
+            return mapEnd;
+
+        }
+
+            return surfaceVerts[surfaceVerts.Length-1];
 
 
     }

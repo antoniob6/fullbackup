@@ -51,6 +51,8 @@ public class QuestManager : MonoBehaviour {
 
         playerCount = players.Count;
 
+
+        //return new RacingQuest(players, GM);
         //return new SurviveQuest(players, GM);
         //return new GuardQuest(players, GM);
         //return new FollowQuest(players, GM);
