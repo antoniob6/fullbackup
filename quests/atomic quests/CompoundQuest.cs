@@ -81,8 +81,18 @@ public class CompoundQuest:Quest{
 
         if (quest3.isComplete) {
             //Debug.Log("OR quest of compound quest completed");
-            reward = quest3.reward;
-            winners = quest3.winners;
+            reward = quest1.reward + quest2.reward;
+            winners = quest1.winners;
+            List<GameObject> winnersToAdd = new List<GameObject>();
+            foreach (GameObject w in winners) {
+                if (quest2.winners.IndexOf(w) != -1) {//found someone who completed both quests
+                    winnersToAdd.Add(w);
+                }
+            }
+            winners.AddRange(winnersToAdd);
+            winners.AddRange(quest3.winners);
+
+           
             //winners.AddRange(quest2.winners);
             questCompleted();
             return;
@@ -91,12 +101,14 @@ public class CompoundQuest:Quest{
             //Debug.Log("both AND quests of compound quest completed");
             reward = quest1.reward + quest2.reward;
             winners = quest1.winners;
-            foreach (GameObject w in quest1.winners) {
+            List<GameObject> winnersToAdd = new List<GameObject>();
+            foreach (GameObject w in winners) {
                 if (quest2.winners.IndexOf(w) != -1) {//found someone who completed both quests
-                    winners.Add(w);
+                    winnersToAdd.Add(w);
                 }
             }
-
+            winners.AddRange(winnersToAdd);
+            winners.AddRange(quest3.winners);
             questCompleted();
             return;
         } else if (quest1.isComplete) {

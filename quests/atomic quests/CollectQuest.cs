@@ -30,7 +30,7 @@ public class CollectQuest : Quest
         collectLimit = Random.Range(3, 20);
         reward = collectLimit * 20;
 
-        questMessage = "take part of collecting " + collectLimit + " pieces of red candy";
+        questMessage = "take part of collecting " + collectLimit + " pieces of yellow candy";
         updateQuestMessage();
     }
 
@@ -78,7 +78,7 @@ public class CollectQuest : Quest
                         questCompleted();
                     }
 
-                    questMessage = "take part of collecting " + collectLimit + " pieces of red candy";
+                    questMessage = "take part of collecting " + collectLimit + " pieces of yellow candy";
                     updateQuestMessage();
 
                 }
