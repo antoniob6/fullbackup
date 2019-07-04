@@ -37,6 +37,25 @@ public class ORQuest : Quest
         updateQuestMessage();
 
     }
+    public ORQuest(Quest q1, Quest q2) : base() {
+        players = q1.players;
+        GM = q1.GM;
+
+
+        quest1 = q1;
+        quest2 = q2;
+
+        quest1.linkedQuest = true;
+        quest2.linkedQuest = true;
+
+
+
+
+
+        reward = quest1.reward + quest2.reward;
+        updateQuestMessage();
+
+    }
 
     public override void init() {
         base.init();
@@ -97,6 +116,16 @@ public class ORQuest : Quest
 
 
         if (quest1.didPlayerWin(PD) || quest2.didPlayerWin(PD))
+            return true;
+        return false;
+    }
+    public override bool didPlayerLose(PlayerData PD = null) {
+        if (PD == null)
+            return base.didPlayerLose();
+
+
+
+        if (quest1.didPlayerLose(PD) && quest2.didPlayerLose(PD))
             return true;
         return false;
     }

@@ -40,6 +40,24 @@ public class CompoundQuest:Quest{
         updateQuestMessage();
 
     }
+    public CompoundQuest(Quest q1, Quest q2,Quest q3) : base() {
+        players = q1.players;
+        GM = q1.GM;
+
+
+        quest1 = q1;
+        quest2 = q2;
+        quest3 = q3;
+
+        quest1.linkedQuest = true;
+        quest2.linkedQuest = true;
+        quest3.linkedQuest = true;
+
+        reward = quest1.reward + quest2.reward;
+
+        updateQuestMessage();
+
+    }
 
     public override void init() {
         //Debug.Log("created and quest");

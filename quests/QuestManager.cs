@@ -47,13 +47,37 @@ public class QuestManager : MonoBehaviour {
     //recursvie means that it allows AND quest and OR quest otherwize it'll repeat recursvely
     int playerCount;
     int questindex = -1;
-    
+    int counter = 0;
     public Quest createRandomQuest(List<GameObject> players, GameManager GM,
         bool allowAND = true,QuestTypes[] usedQuests=null) {
 
         playerCount = players.Count;
+        counter++;
+        if (counter == 1) {
+            return new ANDQuest(new RacingQuest(players, GM), new JumpQuest(players, GM));
+        }
+        if (counter == 2) {
+            return new ORQuest(new FollowQuest(players, GM), new KillQuest(players, GM));
+        }
+        if (counter == 3) {
+            return new ANDQuest(new BossQuest(players, GM),new NOTQuest( new SurviveQuest(players, GM)));
+        }
+        if (counter == 4) {
+            return new CompoundQuest(new CollectQuest(players, GM), new KillQuest(players, GM),new BossQuest(players,GM));
+        }
+        if (counter == 5) {
+            return new ANDQuest(new LocationQuest(players, GM), new GuardQuest(players, GM));
+        }
+        if (counter == 6) {
+            return new ANDQuest(new RacingQuest(players, GM), new NOTQuest(new JumpQuest(players, GM)));
+        }
+        if (counter == 7) {
+            return new ORQuest(new BossQuest(players, GM), new NOTQuest(new KillQuest(players, GM)));
+        }
+        if (counter == 8) {
+            return new CompoundQuest(new CollectQuest(players, GM), new KillQuest(players, GM), new SurviveQuest(players, GM));
+        }
 
-        
         //return new RacingQuest(players, GM);
         //return new SurviveQuest(players, GM);
         //return new GuardQuest(players, GM);
