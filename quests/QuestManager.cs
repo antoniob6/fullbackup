@@ -47,7 +47,7 @@ public class QuestManager : MonoBehaviour {
     //recursvie means that it allows AND quest and OR quest otherwize it'll repeat recursvely
     int playerCount;
     int questindex = -1;
-    int counter = 0;
+    int counter = 9;
     public Quest createRandomQuest(List<GameObject> players, GameManager GM,
         bool allowAND = true,QuestTypes[] usedQuests=null) {
 
