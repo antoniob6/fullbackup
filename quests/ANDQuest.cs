@@ -136,6 +136,13 @@ public class ANDQuest:Quest{
         return false;
     }
 
+    public override void questCompleted() {//make sure the quest discreption is up to date
+        quest1.questCompleted();
+        quest2.questCompleted();
+
+        base.questCompleted();
+    }
+
     public override void DestroyQuest() {
         quest1.DestroyQuest();
         quest2.DestroyQuest();

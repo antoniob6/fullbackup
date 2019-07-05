@@ -51,6 +51,8 @@ public class QuestManager : MonoBehaviour {
     public Quest createRandomQuest(List<GameObject> players, GameManager GM,
         bool allowAND = true,QuestTypes[] usedQuests=null) {
 
+
+        //return new ORQuest(new FollowQuest(players, GM), new SurviveQuest(players, GM));
         playerCount = players.Count;
         counter++;
         if (counter == 1) {

@@ -161,6 +161,12 @@ public class CompoundQuest:Quest{
             }
         }
     }
+    public override void questCompleted() {//make sure the quest discreption is up to date
+        quest1.questCompleted();
+        quest2.questCompleted();
+        quest3.questCompleted();
+        base.questCompleted();
+    }
 
     public override void updateQuestMessage() {//make sure the quest discreption is up to date
         // call the base function after finishing to update them

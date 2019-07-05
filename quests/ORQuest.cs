@@ -82,6 +82,12 @@ public class ORQuest : Quest
 
         }
     }
+    public override void questCompleted() {//make sure the quest discreption is up to date
+        quest1.questCompleted();
+        quest2.questCompleted();
+
+        base.questCompleted();
+    }
 
     public override void updateQuestMessage() {//make sure the quest discreption is up to date
         questMessage = quest1.getMessage() + " OR " + quest2.getMessage();
