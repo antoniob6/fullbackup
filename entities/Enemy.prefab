@@ -131,8 +131,8 @@ MonoBehaviour:
     type: 2}
   onDamageEffect: {fileID: 1000012909287652, guid: 90384af419bb3ca4f98f72359604ce8b,
     type: 2}
-  maxHealth: 3
-  currentHealth: 0
+  maxHealth: 1
+  currentHealth: 1
   destroyWhenDead: 1
 --- !u!114 &114034901613572644
 MonoBehaviour:

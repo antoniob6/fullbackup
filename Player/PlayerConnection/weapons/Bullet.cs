@@ -19,8 +19,9 @@ public class Bullet : MonoBehaviour {
 		
 	}
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (bounce >= 2) {
-            Destroy(gameObject);
+        if (bounce >= 2 && GameManager.instance.isServer) {
+           
+            GameManager.instance.networkDestroy(gameObject);
             return;
         }
 
@@ -31,7 +32,10 @@ public class Bullet : MonoBehaviour {
         bounce++;
     }
 
-
+    private void OnDestroy() {
+        if(GameManager.instance.isServer)
+            GameManager.instance.networkSpawn("explosionPrefab", transform.position);
+    }
 
 
 

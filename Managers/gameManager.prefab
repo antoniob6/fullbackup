@@ -86,6 +86,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MM: {fileID: 0}
   QM: {fileID: 0}
+  explosionPrefab: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
+    type: 2}
   bossPrefab: {fileID: 1298117452632012, guid: cce96b7ded92aee438807c13e8b87d06, type: 2}
   enemyPrefab: {fileID: 1361802489716248, guid: 2224a9094a86be2408eb1cf5c25e295f,
     type: 2}
@@ -117,3 +119,4 @@ MonoBehaviour:
   changeQuest: 0
   devmode: 1
   enemies: []
+  lastSpawnTime: 0

@@ -30,7 +30,9 @@ public class EnemyRecieveDamage : NetworkBehaviour {
             TakeDamage(1,collider);
             //Destroy(collider.gameObject);
             if (isServer) {
+                //GameManager.instance.networkSpawn("explosionPrefab", collider.transform.position);
                 NetworkServer.Destroy(collider.gameObject);
+
             }
         }
     }

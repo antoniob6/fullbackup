@@ -23,7 +23,8 @@ public class GameManager : NetworkBehaviour {
     public QuestManager QM;
 
 
-    [Header("SpawnablePrefaba")]
+    [Header("SpawnablePrefabs")]
+    public GameObject explosionPrefab;
     public GameObject bossPrefab;
     public GameObject enemyPrefab;
     public GameObject candyPrefab;
@@ -89,6 +90,19 @@ public class GameManager : NetworkBehaviour {
 
     public bool changeMapb = false;
     public bool changeQuest = false;
+
+
+    [HideInInspector]
+    public static GameManager instance;
+    void Awake() {
+        if (instance == null)
+            instance = this;
+        else {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Use this for initialization
     void Start() {
@@ -421,6 +435,10 @@ public class GameManager : NetworkBehaviour {
         }
 
         GameObject enemy=null;
+        if (message == "explosionPrefab") {
+            enemy = Instantiate(explosionPrefab, position, Quaternion.identity) as GameObject;
+
+        }
         if (message == "locationPrefab")
         {
             enemy = Instantiate(foundablePrefab, position, Quaternion.identity) as GameObject;
@@ -482,7 +500,8 @@ public class GameManager : NetworkBehaviour {
 
     [Server]
     public void networkDestroy(GameObject toDestroy) {
-        NetworkServer.Destroy(toDestroy);
+        if(toDestroy)
+            NetworkServer.Destroy(toDestroy);
     }
 
     public void CheckCurQuests() {
