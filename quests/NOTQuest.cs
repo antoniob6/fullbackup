@@ -46,6 +46,7 @@ public class NOTQuest:Quest{
         }
     }
     public override void questCompleted() {
+        quest1.questCompleted();
         foreach (GameObject w in quest1.winners) {
             if (winners.IndexOf(w) >= 0) {//found someone who didn't complete
                 winners.Remove(w);
