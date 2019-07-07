@@ -13,13 +13,14 @@ public class XPTextMessage : NetworkBehaviour {
     public Vector3 updirection;
 
     public void Start() {
-        updirection = GravitySystem.instance.getUpDirection(transform.position);
+        //updirection = GravitySystem.instance.getUpDirection(textReference.transform.position);
         StartCoroutine("fadeOut");
     }
 
 
     public void Update() {
-        transform.Translate(updirection * speed * Time.deltaTime);
+        //updirection = GravitySystem.instance.getUpDirection(transform.position);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
     public IEnumerator fadeOut() {
         float startAlpha = textReference.color.a;

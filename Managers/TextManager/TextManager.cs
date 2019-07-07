@@ -26,7 +26,7 @@ public class TextManager : NetworkBehaviour {
     public void createTextOnLocalInstance(Vector3 position,string text) {
         GameObject textObject = Instantiate(XPTextPrefab.gameObject, position, Quaternion.identity);
         if (GravitySystem.instance.isCircularMap())
-            textObject.transform.LookAt(GravitySystem.instance.getUpDirection(textObject.transform.position));
+            textObject.transform.up= (GravitySystem.instance.getUpDirection(textObject.transform.position));
         textObject.GetComponent<XPTextMessage>().updateTextOnLocalInstance(text);
     }
     public void createRedTextOnLocalInstance(Vector3 position, string text) {
