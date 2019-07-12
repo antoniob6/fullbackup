@@ -32,12 +32,20 @@ public class QuestManager : MonoBehaviour {
                     compatabilityTable[i, j] = true;
             }
         }
+        
+        makeNotCompatible(QuestTypes.kill, QuestTypes.survive);
 
 
 
 
     }
+    public void makeNotCompatible(QuestTypes q1,QuestTypes q2)
+    {
+        compatabilityTable[(int)q1, (int)q2] = false;
+        compatabilityTable[(int)q2, (int)q1] = false;
 
+       // Debug.Log("disabled compatability between "+q1+" and " + q2);
+    }
 
 
 
